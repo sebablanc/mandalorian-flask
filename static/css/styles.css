@@ -1,0 +1,116 @@
+body{
+    background: url(../imgs/mandalorian-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mandalorian-logo{
+    width: 286px;
+    height: 131px;
+    cursor: pointer;
+}
+
+.episodes-grid-container{
+    width: 80%;
+    margin: 0 auto;
+    transform: translateY(40vh);
+    color: goldenrod;
+    background: rgba(0,0,0,0.5);
+}
+
+.episode-container{
+    display: grid;
+    grid-template-columns: 60% auto auto;
+    border: 1px solid goldenrod;
+    padding: 0 0px 0 10px;
+}
+
+.episode-info{
+    position: relative;
+}
+
+.episode-status{
+    position: absolute;
+    right: 20px;
+}
+
+.status-disponible {
+    color: greenyellow !important;
+}
+
+.status-reservado {
+    color: black !important;
+}
+
+.status-alquilado {
+    color: #260ab9 !important;
+}
+
+.episode-alquilando{
+    font-size: 30px;
+    text-align: center;
+}
+
+input{
+    display: none;
+}
+
+input[type="number"]{
+    display: block;
+}
+
+.btn{
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.alquilar-form{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    font-size: 20px;
+    justify-content: space-evenly;
+}
+
+.alquilar-form .btn {
+    width: 20%;
+}
+
+.alquilar-form div {
+    display: inline-flex;
+}
+
+.warning-message{
+    width: 50vw;
+    background: orange;
+    color: white;
+    font-size: 20px;
+    padding: 10px 30px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 500px){
+    body{
+        background-size: 100% 100%;
+        background-repeat: repeat-y;
+    }
+    .episodes-grid-container{
+        transform: translateY(2em);
+    }
+    .episode-container{
+        display: grid;
+        grid-template-columns: auto;
+        border: 1px solid goldenrod;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-height: 1270px){
+    .episodes-grid-container{
+        width: 60%;
+        transform: translateY(10vh);
+    }
+}

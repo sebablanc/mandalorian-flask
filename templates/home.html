@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandalorian</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='imgs/The_Mandalorian_logo.svg') }}">
+</head>
+<body>
+    <a href="{{ url_for('home')}}">
+        <img class="mandalorian-logo" src="{{ url_for('static', filename='imgs/The_Mandalorian_logo.svg') }}" alt="">
+    </a>
+    <div class="episodes-grid-container">
+        {% for episode in episodes %}
+            <div class="episode-container">
+                <p class="episode-info">
+                    Episodio {{ loop.index }}: <b>{{ episode.decode('utf-8') }}</b>
+                    <span class="episode-status {{ 'status-disponible' if status[loop.index]=='Disponible' else 'status-reservado' if  status[loop.index]=='Reservado' else 'status-alquilado' }}">{{ status[loop.index] }}</span>
+                </p>
+                <form action ="{{ url_for('reservar')}}" method="POST">
+                    <input type="text" value={{loop.index}} name="episode"/>
+                    <button class="btn" type="submit" value=episode>Reservar</button>
+                </form>
+                <form action ="{{ '/confirmar-pago/'+loop.index|string+'/null' }}" method="GET">
+                    <button class="btn" type="submit">Alquilar</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

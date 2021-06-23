@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandalorian</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('home')}}">
+        <img class="mandalorian-logo" src="{{ url_for('static', filename='imgs/The_Mandalorian_logo.svg') }}" alt="">
+    </a>
+    {% if message %}
+        <div class="warning-message">{{ message }}</div>
+    {% endif %}
+    <div class="episodes-grid-container">
+        
+        <div class="episode-alquilando">Alquilando:  <b>Episodio {{ episodeNumber }}: {{ episode }}</div>
+        <form class="alquilar-form" action ="{{ url_for('alquilar')}}" method="POST">
+            <input type="text" value={{episodeNumber}} name="episode"/>
+            <div>
+                <label for="value">$</label>
+                <input type="number" name="value">
+            </div>
+            <button class="btn" type="submit">Alquilar</button>
+        </form>
+    </div>
+</body>
+</html>
